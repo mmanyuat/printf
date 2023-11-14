@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include <unisted>
+#include <unistd.h>
 
 /**
  * _printf - A a variadic function that takes number of string
