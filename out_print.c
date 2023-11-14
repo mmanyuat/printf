@@ -24,14 +24,23 @@ int out_print(const char *format, va_list aptr)
 	len += print_digit(va_arg(aptr, int), 10);
 	break;
 	case 'i':
-	len += print_digit(va_arg(aptr, unsigned int), 10);
+	len += print_digit(va_arg(aptr,  int), 10);
 	break;
 	case 'x':
+	case 'X':
+	len += print_digit(va_arg(aptr, unsigned int), 16);
+	break;
+	case 'u':
+	len += print_digit(va_arg(aptr, unsigned int), 10);
+	break;
+	case 'o':
+	len += print_digit(va_arg(aptr, unsigned int), 8);
+	break;
+	case 'p':
 	len += print_digit(va_arg(aptr, unsigned int), 16);
 	break;
 	default:
 	len += _putchar('%');
-	len += write(STDOUT_FILENO, &(*format), 1);
 	break;
 	}
 	return (len);
@@ -48,7 +57,7 @@ int print_str(char *str)
 {
 	int count = 0;
 
-	while (*str == '\0')
+	while (*str != '\0')
 	{
 	_putchar((int)*str);
 	count++;
@@ -67,7 +76,7 @@ int print_str(char *str)
 int print_digit(long n, int base)
 {
 	int count;
-	char symbol[] = "0123456789";
+	char symbol[] = "0123456789abcdef";
 
 	if (n < 0)
 	{
