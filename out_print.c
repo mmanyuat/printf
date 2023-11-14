@@ -67,7 +67,7 @@ int print_str(char *str)
 int print_digit(long n, int base)
 {
 	int count;
-	char *symbol;
+	char symbol[] = "0123456789";
 
 	if (n < 0)
 	{
